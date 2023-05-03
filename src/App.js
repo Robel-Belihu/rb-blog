@@ -5,17 +5,15 @@ import CreatePostPage from "./pages/CreatePostPage";
 import Login from "./pages/Login";
 import { auth } from "./firebase";
 import { signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
-  const navigate = useNavigate();
 
   const logout = () => {
     signOut(auth);
     localStorage.clear();
-    isLogged(false);
-    navigate("/login");
+    setIsLogged(false);
+    window.location.pathname = "/login";
   };
   return (
     <Router>
