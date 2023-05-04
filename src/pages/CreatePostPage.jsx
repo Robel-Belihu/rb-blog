@@ -6,7 +6,7 @@ function CreatePostPage() {
       <section className="mb-32 text-center text-gray-800">
         <div className="max-w-[700px] mx-auto px-3 lg:px-6">
           <h2 className="text-3xl font-bold mb-12">Create a Post</h2>
-          <form className="bg-slate-400 p-6 rounded-md">
+          <form className="bg-purple-300 p-6 rounded-md shadow-xl">
             <div className="form-group mb-6">
               <label className="text-xl">Title:</label>
               <input
@@ -76,7 +76,7 @@ function CreatePostPage() {
           duration-150
           ease-in-out"
             >
-              Send
+              SUBMIT POST
             </button>
           </form>
         </div>
