@@ -1,6 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
+import { addDoc, collection } from "firebase/firestore";
+import { auth, db } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 function CreatePostPage() {
+  const [title, setTitle] = useState("");
+  const [post, setPost] = useState("");
+
+  const navigate = useNavigate();
+
+  const postsRef = collection(db, "posts");
+
+  const postHandler = async (e) => {
+    e.preventDefault();
+    await addDoc(postsRef, {
+      title,
+      post,
+      author: {
+        name: auth.currentUser.displayName,
+        id: auth.currentUser.uid,
+      },
+    });
+    navigate("/");
+  };
+
   return (
     <div className="container my-24 px-6 mx-auto ">
       <section className="mb-32 text-center text-gray-800">
@@ -10,6 +33,7 @@ function CreatePostPage() {
             <div className="form-group mb-6">
               <label className="text-xl">Title:</label>
               <input
+                onChange={(e) => setTitle(e.target.value)}
                 type="text"
                 className="form-control block
             w-full
@@ -33,6 +57,7 @@ function CreatePostPage() {
             <div className="form-group mb-6">
               <label className=" text-xl ">write your post here:</label>
               <textarea
+                onChange={(e) => setPost(e.target.value)}
                 className="
             form-control
             block
@@ -56,6 +81,7 @@ function CreatePostPage() {
               ></textarea>
             </div>
             <button
+              onClick={postHandler}
               type="submit"
               className="
           w-full

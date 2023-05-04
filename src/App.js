@@ -25,12 +25,14 @@ function App() {
           >
             Home
           </Link>
-          <Link
-            className="text-white text-lg bg-yellow-600 rounded-md py-1 px-2 text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2"
-            to="/createPost"
-          >
-            Create a Post
-          </Link>
+          {isLogged && (
+            <Link
+              className="text-white text-lg bg-yellow-600 rounded-md py-1 px-2 text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2"
+              to="/createPost"
+            >
+              Create a Post
+            </Link>
+          )}
           {!isLogged ? (
             <Link
               className="text-white text-lg bg-green-500 rounded-md py-1 px-2 text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2"
