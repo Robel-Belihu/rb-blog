@@ -17,7 +17,7 @@ function App() {
   };
   return (
     <Router>
-      <nav class="font-sans flex flex-col text-center sm:flex-row sm:text-left sm:justify-between py-4 px-6 bg-white shadow sm:items-baseline w-full">
+      <nav class="font-sans bg-slate-800 flex justify-center item-center flex-col text-center sm:flex-row sm:text-left sm:justify-center py-4 px-6 bg-white shadow sm:items-baseline w-full">
         <div class="mb-2 sm:mb-0">
           <Link
             className="text-white text-lg bg-blue-500 rounded-md py-1 px-2 no-underline text-grey-darkest hover:text-blue-dark ml-2"
@@ -27,7 +27,7 @@ function App() {
           </Link>
           {isLogged && (
             <Link
-              className="text-white text-lg bg-yellow-600 rounded-md py-1 px-2 text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2"
+              className="text-white text-lg bg-yellow-600 shadow-md rounded-md py-1 px-2 text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2"
               to="/createPost"
             >
               Create a Post
@@ -35,7 +35,7 @@ function App() {
           )}
           {!isLogged ? (
             <Link
-              className="text-white text-lg bg-green-500 rounded-md py-1 px-2 text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2"
+              className="text-white text-lg bg-green-500 shadow-xl rounded-md py-1 px-2 text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2"
               to="/login"
             >
               Login
@@ -52,7 +52,10 @@ function App() {
       </nav>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/createPost" element={<CreatePostPage />} />
+        <Route
+          path="/createPost"
+          element={<CreatePostPage isLogged={isLogged} />}
+        />
         <Route path="/login" element={<Login setIsLogged={setIsLogged} />} />
       </Routes>
     </Router>
