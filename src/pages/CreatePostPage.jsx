@@ -99,7 +99,7 @@ function CreatePostPage({ isLogged }) {
           w-full
           px-6
           py-2.5
-          bg-blue-600
+          bg-purple-600
           text-white
           font-medium
           text-l

@@ -7,7 +7,7 @@ import { auth } from "./firebase";
 import { signOut } from "firebase/auth";
 
 function App() {
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState(localStorage.getItem("isLogged"));
 
   const logout = () => {
     signOut(auth);
@@ -17,7 +17,7 @@ function App() {
   };
   return (
     <Router>
-      <nav class="font-sans bg-slate-800 flex justify-center item-center flex-col text-center sm:flex-row sm:text-left sm:justify-center py-4 px-6 bg-white shadow sm:items-baseline w-full">
+      <nav class="font-sans bg-slate-800 flex justify-center item-center flex-col text-center sm:flex-row sm:text-left sm:justify-center py-4 px-6 shadow sm:items-baseline w-full">
         <div class="mb-2 sm:mb-0">
           <Link
             className="text-white text-lg bg-blue-500 rounded-md py-1 px-2 no-underline text-grey-darkest hover:text-blue-dark ml-2"
@@ -51,7 +51,7 @@ function App() {
         </div>
       </nav>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage isLogged={isLogged} />} />
         <Route
           path="/createPost"
           element={<CreatePostPage isLogged={isLogged} />}
