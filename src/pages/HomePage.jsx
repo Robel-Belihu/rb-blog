@@ -8,6 +8,10 @@ function HomePage({ isLogged }) {
   const [postsList, setPostsList] = useState([]);
 
   const postsRef = collection(db, "posts");
+  const deletePosts = async (id) => {
+    const singlePost = doc(db, "posts", id);
+    await deleteDoc(singlePost);
+  };
 
   useEffect(() => {
     const getPosts = async () => {
@@ -21,12 +25,7 @@ function HomePage({ isLogged }) {
       );
     };
     getPosts();
-  });
-
-  const deletePosts = async (id) => {
-    const singlePost = doc(db, "posts", id);
-    await deleteDoc(singlePost);
-  };
+  }, [deletePosts]);
 
   return (
     <div>
