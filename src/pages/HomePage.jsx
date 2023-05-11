@@ -72,7 +72,7 @@ function HomePage({ isLogged }) {
         <div>
           <a
             title="Robel's Website"
-            href="https://robel-belihu.github.io"
+            href="https://my-portfolio-five-liart.vercel.app/"
             target="_blank"
             class="block w-16 h-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12"
           >
